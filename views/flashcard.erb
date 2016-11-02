@@ -1,22 +1,37 @@
 <h1><%= @flashcard["title"] %></h1>
 
-<ul>
+<ul class="flashcard-wrapper">
   <% @flashcard["questions"].each do |q| %>
-  <li>
-    <div class="question"><%= q["question"] %></div>
-    <div class="answer">
-      <% if q["answer"].respond_to? :each %>
-        <ul>
-          <% q["answer"].each do |item| %>
-            <li><%= item.to_s %></li>
-          <% end %>
-        </ul>
-      <% elsif q["answer"].match(/image\[(.+)\]/) %>
-        <img src="/images/<%= q["answer"].match(/image\[(.+)\]/).captures[0] %>">
-      <% else %>
-        <p><%= q["answer"] %></p>
-      <% end %>
+  <li class="flashcard-container">
+    <div class="flashcard">
+      <div class="question face"><h2><%= q["question"] %></h2></div>
+      <div class="answer face">
+        <% if q["answer"].respond_to? :each %>
+          <ul>
+            <% q["answer"].each do |item| %>
+              <li><%= item.to_s %></li>
+            <% end %>
+          </ul>
+        <% elsif q["answer"].match(/image\[(.+)\]/) %>
+          <!-- <div class="image-wrapper" style="background-image:url('/images/<%= q["answer"].match(/image\[(.+)\]/).captures[0] %>')"> -->
+            <img src="/images/<%= q["answer"].match(/image\[(.+)\]/).captures[0] %>">
+          <!-- </div> -->
+        <% else %>
+          <p><%= q["answer"] %></p>
+        <% end %>
+      </div>
     </div>
   </li>
   <% end %>
 </ul>
+
+<script>
+  for (var card of document.querySelectorAll('.flashcard-container')) {
+    card.addEventListener('click', function(e) {
+      this.classList.toggle('flipped');
+    });
+    card.addEventListener('mouseleave', function(e) {
+      this.classList.remove('flipped');
+    });
+  }
+</script>
