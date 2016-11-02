@@ -1,0 +1,11 @@
+title: Cadet GP Rifle
+questions:
+  - question: What is your favourite colour?
+    answer: Red
+  - question: List three things
+    answer:
+      - One
+      - Two
+      - Three
+  - question: Describe A Fig 11 target
+    answer: image[fig11.jpg]

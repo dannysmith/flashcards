@@ -1,0 +1,7 @@
+<h1>Flashcards</h1>
+
+<ul>
+<% $flashcards.each do |k, v| %>
+  <li><a href="/cards/<%= k.to_s %>"><%= v["title"] %></a></li>
+<% end %>
+</ul>

@@ -1,0 +1,22 @@
+<h1><%= @flashcard["title"] %></h1>
+
+<ul>
+  <% @flashcard["questions"].each do |q| %>
+  <li>
+    <div class="question"><%= q["question"] %></div>
+    <div class="answer">
+      <% if q["answer"].respond_to? :each %>
+        <ul>
+          <% q["answer"].each do |item| %>
+            <li><%= item.to_s %></li>
+          <% end %>
+        </ul>
+      <% elsif q["answer"].match(/image\[(.+)\]/) %>
+        <img src="/images/<%= q["answer"].match(/image\[(.+)\]/).captures[0] %>">
+      <% else %>
+        <p><%= q["answer"] %></p>
+      <% end %>
+    </div>
+  </li>
+  <% end %>
+</ul>
