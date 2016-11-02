@@ -13,9 +13,9 @@ This is a very scrappy project. Don't judge me!
 
 ## TODO
 
-- [ ] Hack some code to read YAML in
-- [ ] Expose a JSOn API
-- [ ] Make the cards flip
+- [X] Hack some code to read YAML in
+- [X] Expose a JSOn API
+- [X] Make the cards flip
 - [ ] Add responsive layout
 - [ ] Handle tapping as well as clicking
 - [ ] Make a print stylesheet with front and back side by side for print/fold
